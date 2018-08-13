@@ -1,0 +1,61 @@
+<div class="row equal" style="margin-bottom: 15px; margin-top: 15px;">
+    <div class="col-md-6">
+        <div class="component">
+            <consistency-view player-list="playerList" graph-attr1="graphAttrs[0]" graph-attr2="graphAttrs[1]"></consistency-view>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="component">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="modal-title">{{selectedPlayer.name}} ({{selectedPlayer.position}}) - {{selectedPlayer.team}}</h4>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <radarchart data="selectedPlayer" axis-values="axisValues"></radarchart>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button type="button" id="configuration" class="btn" aria-label="Settings" ng-click="goToConfiguration()">
+            Configuration <ion-icon name="cog"></ion-icon>
+        </button>
+    </div>
+</div>
+<schedule player="selectedPlayer" team-stats="teamStats" show-modal="showModal"></schedule>
+<div class="row">
+    <div class="col-md-12 playerTable">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm table-hover">
+                <thead>
+                <tr>
+                    <th>Dis.</th>
+                    <th>Pos</th>
+                    <th>Name</th>
+                    <th>Team</th>
+                    <th class="clickable" ng-repeat="stat in tableAttributes" ng-class="{'info': graphAttrs.indexOf(stat.value) > -1}" ng-click="selectCol(stat.value)">{{stat.display}} <span ng-show="graphAttrs.indexOf(stat.value) === 0">X</span><span ng-show="graphAttrs.indexOf(stat.value) === 1">Y</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="player in playerList track by $index" ng-click="selectPlayer(player)" class="clickable" ng-class="{'info': player.playerId === selectedPlayer.playerId}">
+                    <td ng-click="toggleDisplay($event, player)"><div class="condensed checkbox"><label><input type="checkbox" ng-model="player.visible"/></label></div></td>
+                    <td>{{player.position}}
+                    </td>
+                    <td>{{player.name}}
+                    </td>
+                    <td>{{player.team}}
+                    </td>
+                    <td ng-repeat="stat in tableAttributes">
+                        {{player[stat.value] | number : 2}}
+                        <trendicon diff="(player[stat.value] / player.num_games) - (player['diff_' + stat.value] / gamesBack)"></trendicon>
+                        {{player['diff_' + stat.value] / gamesBack | number : 2}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

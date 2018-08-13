@@ -1,0 +1,22 @@
+.scatterplot .axis path,
+.scatterplot .axis line {
+	fill: none;
+	stroke: #000;
+	shapre-rendering: crispEdges;
+}
+
+.scatterplot .dot {
+	stroke: #000;
+}
+
+.scatterplot .scatter-shadow{
+	/*font-size: .75em;*/
+	/*paint-order: stroke;*/
+	stroke: #fff;
+	stroke-width: 2.5px;
+	opacity: 0.9;
+}
+
+.scatterplot .scatter-label{
+	font-size: 10px;
+}

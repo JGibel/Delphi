@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Configuration</h2>
+    </div>
+</div>
+<form>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Positions: </label>
+                <div class="checkbox">
+                    <label class="checkbox-inline" ng-repeat="position in positions">
+                        <input type="checkbox" id="inlineCheckbox1" ng-click="addBasicItemToArray(selectedPositions, position)" ng-checked="selectedPositions.indexOf(position) > -1">{{position}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="numberPlayers">Number of Players: </label>
+                <input type="number" id="numberPlayers" ng-model="playerLimit">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="year">Year: </label>
+                <select class="form-control" id="year" ng-model="season">
+                    <option>2017</option>
+                    <option>2016</option>
+                    <option>2015</option>
+                    <option>2014</option>
+                    <option>2013</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="numberGames">Top Games for consistency score: </label>
+                <input type="number" id="numberGames" ng-model="numberOfConsistencyGames">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Table Statistics: </label>
+                <div class="checkbox" ng-repeat="stat in statistics">
+                    <label>
+                        <input type="checkbox" ng-click="addItemToArray(selectedStatistics, stat)" ng-checked="hasItem(selectedStatistics, stat) > -1">
+                        {{stat.display}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Radar Chart Statistics: </label>
+                <div class="checkbox" ng-repeat="stat in statistics">
+                    <label>
+                        <input type="checkbox" ng-click="addItemToArray(selectedRadarStatistics, stat)" ng-checked="hasItem(selectedRadarStatistics, stat) > -1">
+                        {{stat.display}}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-default" ng-click="saveConfiguration()">Save</button>
+            <button type="button" class="btn btn-default" ng-click="cancelConfiguration()">Cancel</button>
+        </div>
+    </div>
+</form>
+
+

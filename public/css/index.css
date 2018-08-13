@@ -1,0 +1,65 @@
+body {
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: #d2e7d0;
+}
+.bodyWrapper{
+	overflow: hidden;
+}
+
+.condensed.checkbox{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.playerTable{
+	font-size: 9pt;
+	background-color: white;
+}
+
+.playerTable .info{
+	background-color: #AAD2A6 !important;
+}
+
+.playerTable table{
+	font-size: 85%;
+	margin-bottom: 0px;
+}
+ion-icon[name="arrow-dropup"]{
+	color: #28a745;
+}
+
+ion-icon[name="arrow-dropdown"]{
+	color: #dc3545;
+}
+ion-icon[name="remove"]{
+	color: #6c757d;
+}
+
+
+.clickable{
+	cursor: pointer;
+}
+
+.scheduleTable{
+	font-size: 7pt;
+}
+
+
+.component{
+	background-color: white;
+	padding: 5px;
+	border-radius: 8px;
+	height: 100%;
+}
+
+#myModal{
+	display: inherit;
+}
+
+.btn{
+	background-color: white;
+}
+#configuration ion-icon{
+	font-size: 14pt;
+}

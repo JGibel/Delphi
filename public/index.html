@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="delphi">
+<head>
+    <title>Project Deplhi</title>
+    <link href="/scripts/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css"> <!-- load bootstrap -->
+    <link href="/css/index.css" rel="stylesheet" type="text/css">
+    <link href="/css/scatterplot.css" rel="stylesheet" type="text/css">
+    <link href="/css/radarchart.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script> <!-- load jquery -->
+    <script src="/scripts/angular/angular.js"></script><!-- load angular -->
+    <script src="/scripts/angular-route/angular-route.js"></script><!-- load angular -->
+    <script src="/scripts/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/scripts/bootstrap/dist/js/bootstrap.js"></script><!-- load bootstrap -->
+    <script src="https://unpkg.com/ionicons@4.3.0/dist/ionicons.js"></script>
+    <script src="/scripts/d3/build/d3.js"></script><!-- load d3js -->
+    <script src="app.js"></script>
+    <script src="app/consistency/consistency.js"></script>
+    <script src="app/playerList/playerList.js"></script>
+    <script src="app/playerView/playerView.js"></script>
+    <script src="app/schedule/schedule.js"></script>
+    <script src="app/configuration/configuration.js"></script>
+    <script src="common/services/statsFactory.js"></script>
+    <script src="common/directives/scatterplot/scatterplot.js"></script>
+    <script src="common/directives/radarchart/radarchart.js"></script>
+    <script src="common/directives/trendicon/trendicon.js"></script>
+</head>
+<body ng-controller="appCtrl">
+    <div class="bodyWrapper">
+        <div ui-view></div>
+    </div>
+</body>
+</html>

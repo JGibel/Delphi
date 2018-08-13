@@ -1,0 +1,39 @@
+
+<div id="myModal" class="modal" role="dialog" ng-show="showModal">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="closeModal()">&times;</button>
+                <h4 class="modal-title">{{player.name}} ({{player.position}}) - {{player.team}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <radarchart data="player" axis-values="axisValues"></radarchart>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Upcoming Schedule</h4>
+                        <table class="table table-condensed scheduleTable">
+                            <thead>
+                                <tr>
+                                    <th colspan="3" ng-repeat="schedItem in teamStats.schedule[player.team]">
+                                        <span ng-show="schedItem.homeTeam !== player.team">@</span>{{schedItem.opposingTeam}}
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="closeModal()">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

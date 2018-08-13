@@ -1,0 +1,75 @@
+
+<div id="myModal" class="modal" role="dialog" ng-show="showModal">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="closeModal()">&times;</button>
+                <h4 class="modal-title">{{player.name}} ({{player.position}}) - {{player.team}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Upcoming Schedule</h4>
+                        <table class="table table-condensed scheduleTable">
+                            <thead>
+                                <tr>
+                                    <th colspan="4" ng-repeat="schedItem in teamStats.schedule[player.team]">
+                                        <span ng-hide="schedItem.homeTeam !== player.team">@</span>{{schedItem.opposingTeam}}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th ng-repeat-start="schedItem in teamStats.schedule[player.team]">
+                                        Rec. Yds
+                                    </th>
+                                    <th>
+                                        Rus. Yds
+                                    </th>
+                                    <th>
+                                        Rec. Tds
+                                    </th>
+                                    <th ng-repeat-end>
+                                        Rus. Tds
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td ng-repeat-start="schedItem in teamStats.schedule[player.team]" ng-init="oppTeam = schedItem.homeTeam !== player.team ? schedItem.homeTeam : schedItem.awayTeam">
+                                        {{teamStats.fullStats[oppTeam].receivingYardsAllowedRanking}}
+                                        <trendicon diff="teamStats.fullStats[oppTeam].receivingYardsAllowedRanking - teamStats.diffStats[oppTeam].receivingYardsAllowedRanking"></trendicon>
+                                        {{teamStats.diffStats[oppTeam].receivingYardsAllowedRanking}}
+                                    </td>
+                                    <td>
+                                        {{teamStats.fullStats[oppTeam].rushingYardsAllowedRanking}}
+                                        <trendicon diff="teamStats.fullStats[oppTeam].rushingYardsAllowedRanking - teamStats.diffStats[oppTeam].rushingYardsAllowedRanking"></trendicon>
+                                        {{teamStats.diffStats[oppTeam].rushingYardsAllowedRanking}}
+                                    </td>
+                                    <td>
+                                        {{teamStats.fullStats[oppTeam].receivingTouchdownsAllowedRanking}}
+                                        <trendicon diff="teamStats.fullStats[oppTeam].receivingTouchdownsAllowedRanking - teamStats.diffStats[oppTeam].receivingTouchdownsAllowedRanking"></trendicon>
+                                        {{teamStats.diffStats[oppTeam].receivingTouchdownsAllowedRanking}}
+                                    </td>
+                                    <td ng-repeat-end>
+                                        {{teamStats.fullStats[oppTeam].rushingTouchdownsAllowedRanking}}
+                                        <trendicon diff="teamStats.fullStats[oppTeam].rushingTouchdownsAllowedRanking - teamStats.diffStats[oppTeam].rushingTouchdownsAllowedRanking"></trendicon>
+                                        {{teamStats.diffStats[oppTeam].rushingTouchdownsAllowedRanking}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="closeModal()">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
